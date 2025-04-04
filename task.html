@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money-Making Tasks - Irakoze.net</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reuse your existing styles from index.html */
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: orange;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        /* Header - Same as index.html */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: yellow;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+            
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+        }
+        
+        /* Sidebar Styles (Added from your example) */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: var(--dark);
+            z-index: 1001;
+            transition: right 0.3s ease-out;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sidebar.active {
+            right: 0;
+        }
+        
+        .sidebar-close {
+            align-self: flex-end;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        
+        .sidebar-links {
+            list-style: none;
+        }
+        
+        .sidebar-links li {
+            margin-bottom: 1.5rem;
+        }
+        
+        .sidebar-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 0.5rem 0;
+        }
+        
+        .sidebar-links a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar-links a.active {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Task Page Specific Styles */
+        .task-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('cash.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .task-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.3), rgba(37, 117, 252, 0.3));
+            z-index: 0;
+            animation: gradientShift 8s ease infinite alternate;
+        }
+        
+        .task-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .task-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .task-hero .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.6s both, pulse 2s infinite 2s;ate;
+        }
+        
+        .task-hero .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tasks-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+        
+        .task-categories {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+        
+        .category-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .task-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .task-card:nth-child(1) { animation-delay: 0.2s; }
+        .task-card:nth-child(2) { animation-delay: 0.4s; }
+        .task-card:nth-child(3) { animation-delay: 0.6s; }
+        .task-card:nth-child(4) { animation-delay: 0.8s; }
+        .task-card:nth-child(5) { animation-delay: 1.0s; }
+        .task-card:nth-child(6) { animation-delay: 1.2s; }
+        
+        .task-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .task-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .task-image {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .task-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .task-card:hover .task-image img {
+            transform: scale(1.1);
+        }
+        
+        .task-difficulty {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+        
+        .task-body {
+            padding: 1.5rem;
+        }
+        
+        .task-body h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .task-body p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .task-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .task-cta {
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.8rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .task-cta:hover {
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+        
+        .task-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .task-cta:hover::before {
+            left: 100%;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .faq-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            animation: expandLine 1s ease-out 0.5s both;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        /* Footer - Same as index.html */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px) scale(1.1);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes gradientShift {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+        
+        @keyframes expandLine {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .task-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tasks-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .sidebar.active {
+                right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay -->
+    <div class="overlay"></div>
+    
+    <!-- Header with Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-coins"></i>
+                <span>irakoze.net</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="task.html" class="active">Tasks</a></li>
+                <li><a href="game.html">Games</a></li>
+                <li><a href="hacking.html">Hacking</a></li>
+            </ul>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Sidebar -->
+    <div class="sidebar">
+        <button class="sidebar-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="sidebar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="task.html" class="active">Tasks</a></li>
+            <li><a href="game.html">Games</a></li>
+            <li><a href="hacking.html">Hacking</a></li>
+        </ul>
+    </div>
+    
+    <!-- Task Hero Section -->
+    <section class="task-hero">
+        <h1>Money-Making Tasks</h1>
+        <p>Earn real money by completing simple tasks. No investment required - start earning today!</p>
+        <a href="#tasks" class="cta-button">Browse Tasks</a>
+    </section>
+    
+    <!-- Tasks Container -->
+    <div class="tasks-container" id="tasks">
+        <h2>Available Tasks</h2>
+        <p class="subtitle">Select a category to filter tasks</p>
+        
+        <div class="task-categories">
+            <button class="category-btn active">All Tasks</button>
+            <button class="category-btn"> Surveys</button>
+            <button class="category-btn">App Testing</button>
+            <button class="category-btn">Data Entry</button>
+            <button class="category-btn">Social Media</button>
+            <button class="category-btn">Online Jobs</button>
+        </div>
+        
+        <div class="tasks-grid">
+            <!-- Task 1 -->
+            <div class="task-card">
+                <div class="task-header">
+                    <span>Survey + tasks</span>
+                    <span class="task-difficulty">Easy</span>
+                </div>
+                <div class="task-image">
+                    <img src="ora.jpg" alt="Ora rewards">
+                </div>
+                <div class="task-body">
+                    <h3>Ora Rewards :app</h3>
+                    <p>Unlock a world of rewards with Ora Rewards! 🔥
+
+Earn coins by playing mobile games, discovering new titles, and completing offers and surveys. Redeem your rewards for gift cards, PayPal cash, and more! 🎁
+
+Key features:
+
+🎮 Play mobile games and earn rewards
+🎁 Redeem coins for gift cards, PayPal cash, and more
+🌟 Complete offers and surveys for extra rewards
+
+Download Ora Rewards now for FREE and start earning! 📈</p>
+                    <div class="task-meta">
+                        <span><i class="fas fa-coins"></i> $10 per day </span>
+                        <span><i class="fas fa-users"></i> 22M + registered</span>
+                    </div>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.orarewards.makemoney" class="task-cta">Start earning</a>
+            </div>
+      <!-- Task 2 -->
+            <div class="task-card">
+                <div class="task-header">
+                    <span>Claiming</span>
+                    <span class="task-difficulty">easy</span>
+                </div>
+                <div class="task-image">
+                    <img src="lite.jpg" alt="lite pick">
+                </div>
+                <div class="task-body">
+                    <h3>Litepick.io</h3>
+                    <p>Litepick.io is free LTC Faucet. Earn free litecoin every hour and multiply your litecoins up to 4750x by playing provably fair HI-LO game.
+                    
+                   *Use my referral code 🎁: <strong>(irakozejoseph)</strong>
+                   </p>
+                    <div class="task-meta">
+                        <span><i class="fas fa-coins"></i> $25 per day</span>
+                        <span><i class="fas fa-users"></i>11M + registered</span>
+                    </div>
+                </div>
+                <a href="https://litepick.io/?ref=irakozejoseph" class="task-cta">Start earning</a>
+            </div>
+            
+            <!-- Task 3 -->
+            <div class="task-card">
+                <div class="task-header">
+                    <span>Claiming</span>
+                    <span class="task-difficulty">Easy</span>
+                </div>
+                <div class="task-image">
+                    <img src="bnb.jpg" alt="BNB pick">
+                </div>
+                <div class="task-body">
+                    <h3>BNBpick.io</h3>
+                    <p>🚀 Get ready to earn big with ( BNB PICK )! 🚀
+
+Earn FREE BNB every hour with our BNB Faucet! 🕒
+
+But that's not all! Multiply your BNB by playing our provably fair games! 🎲
+
+Key features:
+
+🕒 Earn free BNB every hour
+
+📈 Multiply your coins
+
+🎲 Play provably fair games
+
+Join now and start earning FREE BNB! 💸
+
+Use my referral code 🎁:  <strong>(irakozejoseph)</strong>
+</p>
+                    <div class="task-meta">
+                        <span><i class="fas fa-coins"></i> $14 per day</span>
+                        <span><i class="fas fa-users"></i> 50M + registered</span>
+                    </div>
+                </div>
+                <a href="https://bnbpick.io/?ref=IrakozeJoseph" class="task-cta">Start earning</a>
+            </div>
+            
+            <!-- Task 4 -->
+            <div class="task-card">
+                <div class="task-header">
+                    <span>Mining ⛏️</span>
+                    <span class="task-difficulty">Easy</span>
+                </div>
+                <div class="task-image">
+                    <img src="rubi.png" alt="Rubi mining ">
+                </div>
+                <div class="task-body">
+                    <h3>💎Rubi Mining ⛏️</h3>
+                    <p>H🔥 NEW COIN ALERT! 🔥
+Start mining NOW and get ahead of the game! 🚀
+Introducing RUBI, a revolutionary blockchain-based social network that rewards you with digital assets! 📈
+💎 MINE RUBI BLOCKS NOW! 💎
+Use my referral code:<strong>( IRAKOZEJOSEPH )</strong>🔥 and boost your mining rewards! 💪
+Join now and start mining! ⛏️ 🎉"</p>
+                    <div class="task-meta">
+                        <span><i class="fas fa-coins"></i> Upcoming</span>
+                        <span><i class="fas fa-users"></i> 1M+ mining</span>
+                    </div>
+                </div>
+                <a href="https://rubi.click/join/IRAKOZEJOSEPH" class="task-cta">Start Mining</a>
+            </div>
+            
+            <!-- Task 5 -->
+            <div class="task-card">
+                <div class="task-header">
+                    <span>Mining ⛏️</span>
+                    <span class="task-difficulty">easy</span>
+                </div>
+                <div class="task-image">
+                    <img src="bee.png" alt="Bee network">
+                </div>
+                <div class="task-body">
+                    <h3>Bee Network ⛏️</h3>
+                    <p>🌐🔥 Join Bee Network and Start Mining Now! ⛏️💸
+
+Be part of a thriving community that's bridging the gap from Web2 to Web3 🚀🌟!
+
+Mine cryptocurrency with Bee Network and join over 24 million users worldwide 🌎👥!
+
+Ready to start mining? ⛏️💪
+
+Use my referral code: <strong>( mrjoseph2025 )</strong>
+
+You'll receive a bonus just for signing up! 🎁
+Become a Beeliever and join the buzz! 🐝💖🎉</p>
+                    <div class="task-meta">
+                        <span><i class="fas fa-coins"></i> Upcoming</span>
+                        <span><i class="fas fa-users"></i>5M + mining</span>
+                    </div>
+                </div>
+                <a href=" https://j.bee.com/s?a=mrjoseph2025" class="task-cta">Start Mining</a>
+            </div>
+            
+            
+            <!-- Task 6 -->
+           
+            <div class="task-card">
+                <div class="task-header">
+                    <span>Survey</span>
+                    <span class="task-difficulty">Medium</span>
+                </div>
+                <div class="task-image">
+                    <img src="https://images.unsplash.com/photo-1572025442646-866d16c84a54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Health Survey">
+                </div>
+                <div class="task-body">
+                    <h3>Health & Wellness Survey</h3>
+                    <p>Answer questions about your health habits and lifestyle. Earn $2.00 for this 20-minute survey.</p>
+                    <div class="task-meta">
+                        <span><i class="fas fa-coins"></i> $2.00 per survey</span>
+                        <span><i class="fas fa-users"></i> 156 completed</span>
+                    </div>
+                </div>
+                <a href="#" class="task-cta">Unavailable</a>
+            </div>
+        </div>
+    </div> 
+    
+    
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How do I get paid for completing tasks?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Payments are processed through PayPal, bank transfer, or mobile money (depending on your country). You can request payment once you reach the minimum payout threshold.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Are these tasks available worldwide?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Most tasks are available globally, but some may be restricted to specific countries due to client requirements. The available tasks will automatically adjust based on your location.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How long does it take to receive payment?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Payments are processed within 3-5 business days after approval of your completed tasks. PayPal transfers are usually instant once processed.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Is there any fee to join or withdraw earnings?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>No, joining and withdrawing your earnings is completely free. We never ask for any payment or investment to access money-making tasks.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Irakoze.net</h3>
+                <p>Providing free services and resources since 2023. Our mission is to make earning accessible to everyone.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="task.html">Tasks</a>
+                <a href="game.html">Games</a>
+                <a href="hacking.html">Hacking</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>Email: contact@irakoze.net</p>
+                <p>Phone: +250 123 456 789</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Irakoze.net. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile sidebar functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const sidebar = document.querySelector('.sidebar');
+            const sidebarClose = document.querySelector('.sidebar-close');
+            const overlay = document.querySelector('.overlay');
+            
+            // Function to open sidebar
+            function openSidebar() {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Function to close sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Toggle sidebar when hamburger is clicked
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                openSidebar();
+            });
+            
+            // Close sidebar when close button is clicked
+            sidebarClose.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeSidebar();
+            });
+            
+            // Close sidebar when overlay is clicked
+            overlay.addEventListener('click', function() {
+                closeSidebar();
+            });
+            
+            // Close sidebar when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!sidebar.contains(e.target) && e.target !== hamburger) {
+                    closeSidebar();
+                }
+            });
+            
+            // Prevent clicks inside sidebar from closing it
+            sidebar.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            
+            // Close sidebar when pressing Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+            
+            // FAQ functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const item = question.parentElement;
+                    item.classList.toggle('active');
+                    
+                    // Close other open FAQs
+                    faqQuestions.forEach(q => {
+                        if (q !== question && q.parentElement.classList.contains('active')) {
+                            q.parentElement.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // Category filter functionality
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    // Here you would add filtering logic
+                });
+            });
+            
+            // Add scroll animation for elements
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.task-card, .faq-item, .footer-column');
+                const windowHeight = window.innerHeight;
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementPosition < windowHeight - elementVisible) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial state for animated elements
+            document.querySelectorAll('.task-card, .faq-item, .footer-column').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+            
+            // Run once on load
+            animateOnScroll();
+            
+            // Run on scroll
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
+</body>
+</html>
