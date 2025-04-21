@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Irakoze.net - Free Games & Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
             --primary: #6a11cb;
@@ -34,12 +33,13 @@
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            animation: fadeInDown 0.8s ease-out;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            will-change: transform;
+            backface-visibility: hidden;
         }
         
         .nav-container {
@@ -56,11 +56,6 @@
             display: flex;
             align-items: center;
             white-space: nowrap;
-            transition: transform 0.3s ease;
-        }
-        
-        .logo:hover {
-            transform: scale(1.05);
         }
         
         .logo i {
@@ -75,7 +70,6 @@
         
         .nav-links li {
             margin-left: 1.2rem;
-            position: relative;
         }
         
         .nav-links a {
@@ -86,24 +80,6 @@
             padding: 0.4rem 0.8rem;
             border-radius: 5px;
             font-size: 0.95rem;
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-            width: 0;
-            height: 2px;
-            background: white;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-            transform: translateX(-50%) scaleX(1);
         }
         
         .nav-links a:hover {
@@ -123,11 +99,6 @@
             color: white;
             padding: 0.4rem;
             margin-left: 0.5rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .hamburger:hover {
-            transform: rotate(90deg);
         }
         
         /* Sidebar - Optimized for mobile */
@@ -138,122 +109,51 @@
             width: 280px;
             max-width: 90%;
             height: 100vh;
-            background-color: rgba(26, 26, 46, 0.95);
+            background-color: var(--dark);
             z-index: 1001;
-            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
             will-change: transform;
             overflow-y: auto;
-            backdrop-filter: blur(5px);
         }
         
         .sidebar.active {
             transform: translateX(-100%);
         }
         
-        /* Improved Sidebar Close Button */
         .sidebar-close {
-            position: absolute;
-            top: 20px;
-            right: 44px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            align-self: flex-end;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
             cursor: pointer;
-            background: rgba(255, 255, 255, 0.1);
+            background: none;
             border: none;
-            border-radius: 50%;
-            padding: 0;
-            transition: all 0.3s ease;
-            z-index: 1;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        
-        .sidebar-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(90deg) scale(1.1);
-        }
-        
-        .sidebar-close:active {
-            transform: rotate(90deg) scale(0.95);
-        }
-        
-        .sidebar-close i {
-            transition: transform 0.3s ease;
-        }
-        
-        .sidebar.active .sidebar-close i {
-            transform: rotate(0deg);
+            padding: 0.3rem;
         }
         
         .sidebar-links {
             list-style: none;
-            margin-top: 2rem;
         }
         
         .sidebar-links li {
             margin-bottom: 1.2rem;
-            opacity: 0;
-            transform: translateX(20px);
-            transition: all 0.4s ease;
-        }
-        
-        .sidebar.active .sidebar-links li {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .sidebar.active .sidebar-links li:nth-child(1) {
-            transition-delay: 0.1s;
-        }
-        
-        .sidebar.active .sidebar-links li:nth-child(2) {
-            transition-delay: 0.2s;
-        }
-        
-        .sidebar.active .sidebar-links li:nth-child(3) {
-            transition-delay: 0.3s;
-        }
-        
-        .sidebar.active .sidebar-links li:nth-child(4) {
-            transition-delay: 0.4s;
         }
         
         .sidebar-links a {
             color: white;
             text-decoration: none;
             font-size: 1.1rem;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
             display: block;
             padding: 0.5rem 0;
-            position: relative;
-        }
-        
-        .sidebar-links a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-        
-        .sidebar-links a:hover::before {
-            width: 100%;
         }
         
         .sidebar-links a:hover {
             color: var(--primary);
-            padding-left: 10px;
         }
         
         .sidebar-links a.active {
@@ -274,7 +174,6 @@
             visibility: hidden;
             transition: all 0.3s ease;
             will-change: opacity;
-            backdrop-filter: blur(3px);
         }
         
         .overlay.active {
@@ -296,33 +195,6 @@
             background-position: center;
             background-attachment: fixed;
             color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(106, 17, 203, 0.3), rgba(37, 117, 252, 0.3));
-            z-index: -1;
-            animation: gradientShift 15s ease infinite;
-            background-size: 200% 200%;
-        }
-        
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
         }
         
         .hero h1 {
@@ -330,8 +202,6 @@
             margin-bottom: 1.2rem;
             line-height: 1.3;
             font-weight: 700;
-            animation: fadeInUp 1s ease both;
-            animation-delay: 0.3s;
         }
         
         .hero p {
@@ -339,8 +209,6 @@
             max-width: 800px;
             line-height: 1.5;
             margin-bottom: 1.8rem;
-            animation: fadeInUp 1s ease both;
-            animation-delay: 0.6s;
         }
         
         .cta-button {
@@ -356,25 +224,6 @@
             text-decoration: none;
             display: inline-block;
             font-weight: 600;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 1s ease both;
-            animation-delay: 0.9s;
-        }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .cta-button:hover::before {
-            left: 100%;
         }
         
         .cta-button:hover {
@@ -395,7 +244,6 @@
             font-size: 2rem;
             position: relative;
             font-weight: 700;
-            animation: fadeIn 1s ease both;
         }
         
         .section-title::after {
@@ -408,17 +256,6 @@
             height: 3px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 2px;
-            animation: expandLine 1s ease both;
-            animation-delay: 0.5s;
-        }
-        
-        @keyframes expandLine {
-            from {
-                width: 0;
-            }
-            to {
-                width: 60px;
-            }
         }
         
         .services-grid {
@@ -432,27 +269,12 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease forwards;
-        }
-        
-        .service-card:nth-child(1) {
-            animation-delay: 0.3s;
-        }
-        
-        .service-card:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-        
-        .service-card:nth-child(3) {
-            animation-delay: 0.7s;
+            transition: all 0.3s ease;
         }
         
         .service-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
         
         .service-img {
@@ -464,11 +286,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.4s ease;
         }
         
         .service-card:hover .service-img img {
-            transform: scale(1.1) rotate(1deg);
+            transform: scale(1.05);
         }
         
         .service-content {
@@ -481,11 +303,6 @@
             margin-bottom: 0.8rem;
             color: var(--primary);
             font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        
-        .service-card:hover .service-content h3 {
-            color: var(--secondary);
         }
         
         .service-content p {
@@ -515,21 +332,6 @@
             flex: 1 1 250px;
             margin-bottom: 1.2rem;
             padding: 0 0.8rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease forwards;
-        }
-        
-        .footer-column:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-        
-        .footer-column:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-        
-        .footer-column:nth-child(3) {
-            animation-delay: 0.6s;
         }
         
         .footer-column h3 {
@@ -548,11 +350,6 @@
             width: 35px;
             height: 2px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
-        }
-        
-        .footer-column:hover h3::after {
-            width: 100%;
         }
         
         .footer-column p, .footer-column a {
@@ -561,13 +358,12 @@
             margin-bottom: 0.8rem;
             display: block;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: color 0.2s ease;
             font-size: 0.9rem;
         }
         
         .footer-column a:hover {
             color: var(--primary);
-            padding-left: 5px;
         }
         
         .social-links {
@@ -586,14 +382,13 @@
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             font-size: 0.9rem;
         }
         
         .social-links a:hover {
             background-color: var(--primary);
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
         }
         
         .copyright {
@@ -602,29 +397,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.85rem;
             color: #aaa;
-            animation: fadeIn 1s ease both;
-            animation-delay: 0.8s;
-        }
-        
-        /* Animation keyframes */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         
         /* Performance optimizations */
@@ -883,39 +655,6 @@
                     }
                 });
             });
-            
-            // Intersection Observer for scroll animations
-            const animateOnScroll = function() {
-                const elements = document.querySelectorAll('.service-card, .footer-column');
-                
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.animationPlayState = 'running';
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.1
-                });
-                
-                elements.forEach(element => {
-                    element.style.animationPlayState = 'paused';
-                    observer.observe(element);
-                });
-            };
-            
-            // Initialize scroll animations
-            animateOnScroll();
-            
-            // Add parallax effect to hero section
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                window.addEventListener('scroll', function() {
-                    const scrollPosition = window.pageYOffset;
-                    hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
-                });
-            }
         });
     </script>
 </body>
