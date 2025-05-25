@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Irakoze.net - Free Games & Services</title>
+    <title>Irakoze.net - Free Games & Services | Earn Money Online | No Investment Required</title>
+    <meta name="description" content="Discover legitimate ways to earn money online without investment. Free PSP games, ethical hacking resources, and trusted money-making platforms.">
+    <meta name="keywords" content="earn money online, free games, PSP games, ethical hacking, cybersecurity, no investment, legitimate earning">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google AdSense - Replace YOUR_ADSENSE_ID with your actual AdSense publisher ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+            crossorigin="anonymous"></script>
     <style>
         :root {
             --primary: #6a11cb;
@@ -21,9 +27,23 @@
         }
         
         body {
-            background-color: orange;
-            color: var(--dark) you;
+            background: linear-gradient(135deg, #ff9a56, #ffad56);
+            color: var(--dark);
             overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Ad container styles */
+        .ad-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            padding: 1rem;
+        }
+        
+        .ad-banner {
+            max-width: 100%;
+            text-align: center;
         }
         
         /* Header */
@@ -433,10 +453,29 @@
             }
         }
         
-        /* Responsive Design */
+        /* Enhanced Responsive Design */
+        @media (max-width: 1200px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .services-grid {
+                gap: 1.5rem;
+            }
+        }
+        
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 2.8rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
             }
         }
         
@@ -449,26 +488,83 @@
                 display: block;
             }
             
+            .hero {
+                padding: 3rem 1.5rem;
+                min-height: 70vh;
+            }
+            
             .hero h1 {
                 font-size: 2.2rem;
+                margin-bottom: 1rem;
             }
             
             .hero p {
                 font-size: 1rem;
+                margin-bottom: 1.5rem;
             }
             
             .section-title {
                 font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .services {
+                padding: 3rem 1.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .service-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
             }
         }
         
         @media (max-width: 576px) {
             .hero {
                 padding: 2rem 1rem;
+                min-height: 60vh;
             }
             
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .cta-button {
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .services {
+                padding: 2rem 1rem;
+            }
+            
+            .service-content {
+                padding: 1rem;
+            }
+            
+            .service-content h3 {
+                font-size: 1.3rem;
             }
             
             .sidebar {
@@ -479,6 +575,89 @@
             .sidebar.active {
                 right: 0;
             }
+            
+            .footer-content {
+                padding: 0 1rem;
+            }
+            
+            .footer-column {
+                margin-bottom: 2rem;
+                min-width: 100%;
+            }
+            
+            .social-links {
+                margin-top: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .logo i {
+                margin-right: 5px;
+            }
+            
+            .service-img {
+                height: 160px;
+            }
+        }
+        
+        /* Touch-friendly improvements for mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .nav-links a {
+                padding: 1rem;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+            }
+            
+            .service-card {
+                transition: none;
+            }
+            
+            .service-card:hover {
+                transform: none;
+            }
+            
+            .hamburger {
+                min-height: 48px;
+                min-width: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        
+        /* Improved ad container responsiveness */
+        .ad-container {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        
+        .ad-banner {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .ad-banner > div {
+            max-width: 100%;
+            word-wrap: break-word;
         }
     </style>
 </head>
@@ -498,6 +677,7 @@
                 <li><a href="task.html">Tasks</a></li>
                 <li><a href="game.html">Games</a></li>
                 <li><a href="hacking.html">Hacking</a></li>
+                <li><a href="upload.html">Upload</a></li>
             </ul>
             <button class="hamburger">
                 <i class="fas fa-bars"></i>
@@ -515,6 +695,7 @@
             <li><a href="task.html">Tasks</a></li>
             <li><a href="game.html">Games</a></li>
             <li><a href="hacking.html">Hacking</a></li>
+            <li><a href="upload.html">Upload</a></li>
         </ul>
     </div>
     
@@ -525,9 +706,33 @@
         <a href="#services" class="cta-button">Explore Our Services</a>
     </section>
     
+    <!-- Ad Banner 1 -->
+    <div class="ad-container">
+        <div class="ad-banner">
+            <!-- Placeholder for AdSense - replace with your actual ad code when ready -->
+            <div style="background: linear-gradient(45deg, #f0f0f0, #e0e0e0); padding: 2rem; text-align: center; border-radius: 8px; color: #666;">
+                <i class="fas fa-ad" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                <p>Advertisement Space</p>
+                <small>Replace with your AdSense code</small>
+            </div>
+        </div>
+    </div>
+    
     <!-- Services Section -->
     <section class="services" id="services">
         <h2 class="section-title">Our Services</h2>
+        
+        <!-- Ad Banner 2 -->
+        <div class="ad-container">
+            <div class="ad-banner">
+                <!-- Placeholder for AdSense Rectangle Ad -->
+                <div style="background: linear-gradient(45deg, #f8f9fa, #e9ecef); padding: 1.5rem; text-align: center; border-radius: 8px; color: #666; max-width: 336px; margin: 0 auto;">
+                    <i class="fas fa-rectangle-ad" style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                    <p>Rectangle Ad Space</p>
+                </div>
+            </div>
+        </div>
+        
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-img">
@@ -597,6 +802,7 @@
         </div>
     </footer>
     
+    <script src="ads.js"></script>
     <script>
         // Mobile sidebar functionality
         document.addEventListener('DOMContentLoaded', function() {
@@ -680,4 +886,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
