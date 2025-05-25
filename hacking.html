@@ -605,7 +605,18 @@
             to { width: 80px; }
         }
         
-        /* Responsive Design */
+        /* Enhanced Mobile Responsive Design */
+        @media (max-width: 1024px) {
+            .services-container {
+                padding: 0 1.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -615,12 +626,93 @@
                 display: block;
             }
             
+            .hacking-hero {
+                padding: 3rem 1.5rem;
+                min-height: 60vh;
+            }
+            
             .hacking-hero h1 {
                 font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .hacking-hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .disclaimer {
+                font-size: 0.9rem;
+                padding: 0.8rem;
+                margin: 1rem auto;
+            }
+            
+            .services-container {
+                margin: 2rem auto;
+                padding: 0 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
             }
             
             .services-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .service-card {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
+            .service-image {
+                height: 160px;
+            }
+            
+            .service-content {
+                padding: 1rem;
+            }
+            
+            .service-content h3 {
+                font-size: 1.3rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .service-content p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 1rem;
+            }
+            
+            .about-section {
+                padding: 0 1rem;
+            }
+            
+            .about-section p {
+                font-size: 1rem;
+                margin-bottom: 1.2rem;
+            }
+            
+            .contact-section {
+                padding: 2rem 1rem;
+            }
+            
+            .contact-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .contact-method {
+                min-width: 100%;
+                max-width: 350px;
             }
             
             .sidebar {
@@ -631,10 +723,56 @@
             .sidebar.active {
                 right: 0;
             }
+        }
+        
+        @media (max-width: 480px) {
+            .hacking-hero {
+                padding: 2rem 1rem;
+            }
             
-            .contact-methods {
-                flex-direction: column;
-                align-items: center;
+            .hacking-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hacking-hero p {
+                font-size: 0.9rem;
+            }
+            
+            .service-image {
+                height: 140px;
+            }
+            
+            .service-content {
+                padding: 0.8rem;
+            }
+            
+            .service-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .service-content p {
+                font-size: 0.85rem;
+            }
+            
+            .contact-section {
+                padding: 1.5rem 0.8rem;
+            }
+            
+            .contact-method {
+                padding: 1rem;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .service-card:hover {
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .contact-method:hover {
+                transform: none;
+                background: rgba(255, 255, 255, 0.1);
             }
         }
     </style>
@@ -859,4 +997,4 @@
         });
     </script>
 </body>
-</html>
+                    </html>
