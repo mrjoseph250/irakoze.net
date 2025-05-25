@@ -512,7 +512,18 @@ background: linear-gradient(to right, orange, blue);
             color: #aaa;
         }
         
-        /* Responsive Design */
+        /* Enhanced Mobile Responsive Design */
+        @media (max-width: 1024px) {
+            .games-container {
+                padding: 0 1.5rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -522,12 +533,74 @@ background: linear-gradient(to right, orange, blue);
                 display: block;
             }
             
+            .games-hero {
+                padding: 3rem 1.5rem;
+                min-height: 60vh;
+            }
+            
             .games-hero h1 {
                 font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .games-hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .games-container {
+                margin: 2rem auto;
+                padding: 0 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
             }
             
             .games-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .game-card {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
+            .game-image {
+                height: 180px;
+            }
+            
+            .game-content {
+                padding: 1rem;
+            }
+            
+            .game-content h3 {
+                font-size: 1.3rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .game-content p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 1rem;
+            }
+            
+            .game-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+            
+            .game-size {
+                align-self: flex-start;
+            }
+            
+            .download-btn {
+                padding: 1rem;
+                font-size: 1rem;
+                margin-top: 1rem;
             }
             
             .sidebar {
@@ -537,6 +610,74 @@ background: linear-gradient(to right, orange, blue);
             
             .sidebar.active {
                 right: 0;
+            }
+            
+            .game-categories {
+                flex-wrap: wrap;
+                gap: 0.8rem;
+                justify-content: center;
+            }
+            
+            .category-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .games-hero {
+                padding: 2rem 1rem;
+            }
+            
+            .games-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .games-hero p {
+                font-size: 0.9rem;
+            }
+            
+            .game-image {
+                height: 160px;
+            }
+            
+            .game-content {
+                padding: 0.8rem;
+            }
+            
+            .game-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .game-content p {
+                font-size: 0.85rem;
+            }
+            
+            .download-btn {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .download-btn {
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .category-btn {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .game-card:hover {
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             }
         }
     </style>
@@ -622,8 +763,10 @@ background: linear-gradient(to right, orange, blue);
                 </div>
                 <div class="game-content">
                     <h3>GTA 4: Grand Theft Auto IV</h3>
-                    <p>
-Experience the gritty streets of Liberty City in Grand Theft Auto IV. Download now and explore a vast open world of crime, action, and drama.<h5 style="color:green">Coming soon</h5></p>
+                    <p>Experience the gritty streets of Liberty City in Grand Theft Auto IV. Download now and explore a vast open world of crime, action, and drama.</p>
+                    <div style="margin-top: 0.8rem;">
+                        <span style="color: #28a745; font-weight: 600; font-size: 0.9rem; background: rgba(40, 167, 69, 0.1); padding: 0.3rem 0.8rem; border-radius: 15px;">Coming Soon</span>
+                    </div>
                     <div class="game-meta">
                         <span><i class="fas fa-star"></i> 4.8/7</span>
                         <span class="game-size">850MB</span>
@@ -638,7 +781,10 @@ Experience the gritty streets of Liberty City in Grand Theft Auto IV. Download n
                 </div>
                 <div class="game-content">
                     <h3>GTA 5: Grand Theft Auto V</h3>
-                    <p>Download Grand Theft Auto V now and experience the ultimate open-world adventure with unlimited possibilities<h5 style="color:green">Coming soon</h5></p>
+                    <p>Download Grand Theft Auto V now and experience the ultimate open-world adventure with unlimited possibilities.</p>
+                    <div style="margin-top: 0.8rem;">
+                        <span style="color: #28a745; font-weight: 600; font-size: 0.9rem; background: rgba(40, 167, 69, 0.1); padding: 0.3rem 0.8rem; border-radius: 15px;">Coming Soon</span>
+                    </div>
                     <div class="game-meta">
                         <span><i class="fas fa-star"></i> 4.8/5</span>
                         <span class="game-size">850MB</span>
@@ -653,7 +799,11 @@ Experience the gritty streets of Liberty City in Grand Theft Auto IV. Download n
                 </div>
                 <div class="game-content">
                     <h3>Grand Theft Auto: Vice City Stories</h3>
-                    <p>Download Grand Theft Auto: Vice City Stories now and return to the neon-lit streets of Vice City. Take on the role of Vic Vance in a tale of crime, corruption, and revenge.<h5 style="color:green;">available</h5><h5 style="color:red;">ppsspp. app required</h5></p>
+                    <p>Download Grand Theft Auto: Vice City Stories now and return to the neon-lit streets of Vice City. Take on the role of Vic Vance in a tale of crime, corruption, and revenge.</p>
+                    <div style="margin-top: 0.8rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span style="color: #28a745; font-weight: 600; font-size: 0.85rem; background: rgba(40, 167, 69, 0.1); padding: 0.3rem 0.8rem; border-radius: 15px;">Available</span>
+                        <span style="color: #dc3545; font-weight: 600; font-size: 0.85rem; background: rgba(220, 53, 69, 0.1); padding: 0.3rem 0.8rem; border-radius: 15px;">PPSSPP Required</span>
+                    </div>
                     
                     <div class="game-meta">
                         <span><i class="fas fa-star"></i> 4.6/5</span>
