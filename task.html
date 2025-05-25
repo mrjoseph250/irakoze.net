@@ -570,7 +570,18 @@
             to { width: 80px; }
         }
         
-        /* Responsive Design */
+        /* Enhanced Mobile Responsive Design */
+        @media (max-width: 1024px) {
+            .tasks-container {
+                padding: 0 1.5rem;
+            }
+            
+            .tasks-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -580,12 +591,86 @@
                 display: block;
             }
             
+            .task-hero {
+                padding: 3rem 1.5rem;
+            }
+            
             .task-hero h1 {
                 font-size: 2.2rem;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+            
+            .task-hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .tasks-container {
+                margin: 2rem auto;
+                padding: 0 1rem;
+            }
+            
+            .task-categories {
+                flex-wrap: wrap;
+                gap: 0.8rem;
+                justify-content: center;
+            }
+            
+            .category-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
             }
             
             .tasks-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .task-card {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
+            .task-image {
+                height: 160px;
+            }
+            
+            .task-body {
+                padding: 1rem;
+            }
+            
+            .task-body h3 {
+                font-size: 1.3rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .task-body p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 1rem;
+            }
+            
+            .task-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+                font-size: 0.85rem;
+            }
+            
+            .task-cta {
+                padding: 1rem;
+                font-size: 1rem;
+                margin-top: 1rem;
+            }
+            
+            .faq-section {
+                padding: 0 1rem;
+            }
+            
+            .faq-question {
+                padding: 1rem;
+                font-size: 1rem;
             }
             
             .sidebar {
@@ -595,6 +680,75 @@
             
             .sidebar.active {
                 right: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .task-hero {
+                padding: 2rem 1rem;
+            }
+            
+            .task-hero h1 {
+                font-size: 1.9rem;
+            }
+            
+            .task-hero p {
+                font-size: 0.9rem;
+            }
+            
+            .task-image {
+                height: 140px;
+            }
+            
+            .task-body {
+                padding: 0.8rem;
+            }
+            
+            .task-body h3 {
+                font-size: 1.2rem;
+            }
+            
+            .task-body p {
+                font-size: 0.85rem;
+            }
+            
+            .task-cta {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .task-difficulty {
+                font-size: 0.8rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .task-cta {
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .category-btn {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .task-card:hover {
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .faq-question {
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
             }
         }
     </style>
@@ -1023,4 +1177,4 @@ Become a Beeliever and join the buzz! 🐝💖🎉</p>
         });
     </script>
 </body>
-</html>
+    </html>
